@@ -1,10 +1,30 @@
 ﻿namespace _03_Assignment
 {
+  using System;
+
   class Program
   {
     static void Main(string[] args)
     {
-      // write code here
+      var shelter = new DogShelter();
+      var dog1 = shelter.ProvideDog(DogBreed.Beagle, "Mr. Beagles");
+      var dog2 = shelter.ProvideDog(DogBreed.GreatDane, "Louie");
+
+      var person1 = new Person("John Doe", 1990);
+
+      person1.AdoptDog(dog1);
+      person1.AdoptDog(dog2);
+
+      Console.WriteLine($"{person1.Name} is {person1.GetAgeInYears()} years old and owns {person1.OwnedDogCount} dog(s).");
+
+      if (person1.OwnedDogCount > 0)
+      {
+        Console.WriteLine($"Dog(s) owned by {person1.Name}:");
+        foreach (var name in person1.GetDogNames())
+        {
+          Console.WriteLine($"-{name}");
+        }
+      }
     }
   }
 }
